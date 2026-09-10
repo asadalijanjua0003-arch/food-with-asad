@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food with Asad — Food Safety Training &amp; Quality Consultancy</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root{
+  --ivory:#F6F1E7;
+  --cream:#FFFDF8;
+  --soil:#2B2118;
+  --soil-soft:#4A3C2E;
+  --wheat:#C89B3C;
+  --wheat-light:#E7C874;
+  --clay:#B5562D;
+  --crop:#3F5942;
+  --crop-light:#6E8B6A;
+  --line: rgba(43,33,24,0.14);
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ivory);
+  color:var(--soil);
+  font-family:'Work Sans', sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:600; line-height:1.08; letter-spacing:-0.01em;}
+.wrap{max-width:1160px; margin:0 auto; padding:0 32px;}
+section{padding:96px 0;}
+@media(max-width:720px){ section{padding:64px 0;} .wrap{padding:0 22px;} }
+
+/* ---------- NAV ---------- */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,241,231,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1160px; margin:0 auto;}
+.brand{display:flex; align-items:center; gap:10px;}
+.brand-name{font-family:'Fraunces', serif; font-size:1.28rem; font-weight:600;}
+.brand-name em{font-style:normal; color:var(--clay);}
+.nav-links{display:flex; gap:34px; font-size:0.94rem; font-weight:500;}
+.nav-links a{position:relative; padding:4px 0;}
+.nav-links a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px; background:var(--clay); transition:width .25s ease;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:var(--soil); color:var(--cream); padding:10px 20px; border-radius:2px; font-size:0.9rem; font-weight:500;}
+.menu-btn{display:none; flex-direction:column; gap:5px; cursor:pointer;}
+.menu-btn span{width:24px; height:2px; background:var(--soil);}
+@media(max-width:860px){
+  .nav-links, .nav-cta{display:none;}
+  .menu-btn{display:flex;}
+  .nav-links.open{
+    display:flex; flex-direction:column; position:absolute; top:64px; left:0; right:0;
+    background:var(--cream); padding:24px 32px; gap:18px; border-bottom:1px solid var(--line);
+  }
+  .nav-links.open a::after{display:none;}
+}
+
+/* ---------- HERO ---------- */
+.hero{padding:88px 0 40px;}
+.hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;}
+@media(max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:44px;} }
+.eyebrow-line{display:flex; align-items:center; gap:10px; margin-bottom:22px; color:var(--soil-soft); font-size:0.92rem;}
+.eyebrow-line .dash{width:28px; height:1px; background:var(--clay);}
+.hero h1{font-size:clamp(2.4rem, 5vw, 3.6rem); max-width:12ch;}
+.hero p.lead{margin-top:22px; font-size:1.08rem; color:var(--soil-soft); max-width:46ch;}
+.hero-actions{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+.btn-primary{background:var(--clay); color:var(--cream); padding:14px 26px; border-radius:2px; font-weight:500; font-size:0.96rem; transition:background .2s;}
+.btn-primary:hover{background:#943f1d;}
+.btn-ghost{border:1px solid var(--soil); padding:14px 26px; border-radius:2px; font-weight:500; font-size:0.96rem;}
+.btn-ghost:hover{background:var(--soil); color:var(--cream);}
+.hero-stats{display:flex; gap:36px; margin-top:52px; padding-top:28px; border-top:1px solid var(--line); flex-wrap:wrap;}
+.hero-stats div strong{display:block; font-family:'Fraunces',serif; font-size:1.7rem; font-weight:600; color:var(--crop);}
+.hero-stats div span{font-size:0.85rem; color:var(--soil-soft);}
+
+.hero-art{position:relative; aspect-ratio:1/1.05;}
+.hero-art svg{width:100%; height:100%;}
+
+/* ---------- MARQUEE STRIP ---------- */
+.strip{background:var(--soil); color:var(--wheat-light); padding:16px 0; overflow:hidden; white-space:nowrap;}
+.strip-track{display:inline-flex; gap:48px; animation:scroll 26s linear infinite; font-family:'Fraunces',serif; font-size:1.05rem; font-weight:500;}
+.strip:hover .strip-track{animation-play-state:paused;}
+@keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+@media (prefers-reduced-motion: reduce){ .strip-track{animation:none;} }
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px;}
+@media(max-width:900px){ .about-grid{grid-template-columns:1fr; gap:36px;} }
+.section-label{font-size:0.88rem; color:var(--clay); font-weight:600; margin-bottom:14px;}
+.about-grid h2{font-size:clamp(1.8rem,3.4vw,2.5rem); max-width:11ch; margin-bottom:8px;}
+.about-copy p{color:var(--soil-soft); margin-top:18px; max-width:52ch;}
+.credential-list{margin-top:30px; display:flex; flex-direction:column; gap:14px;}
+.credential-list li{list-style:none; display:flex; gap:14px; align-items:flex-start; font-size:0.96rem;}
+.credential-list li::before{content:''; width:6px; height:6px; margin-top:9px; background:var(--wheat); flex-shrink:0; transform:rotate(45deg);}
+
+/* ---------- SERVICES / COURSES ---------- */
+.services{background:var(--soil); color:var(--cream);}
+.services .section-label{color:var(--wheat-light);}
+.services h2{color:var(--cream); font-size:clamp(1.8rem,3.4vw,2.5rem); max-width:14ch;}
+.service-row{
+  display:grid; grid-template-columns:60px 1fr 140px; gap:24px; align-items:center;
+  padding:26px 0; border-top:1px solid rgba(255,255,255,0.14);
+}
+.service-row:last-child{border-bottom:1px solid rgba(255,255,255,0.14);}
+.service-num{font-family:'Fraunces',serif; color:var(--wheat); font-size:1.1rem;}
+.service-row h3{font-size:1.25rem; font-weight:500; color:var(--cream);}
+.service-row p{color:rgba(255,253,248,0.68); font-size:0.92rem; margin-top:6px; max-width:56ch;}
+.service-tag{justify-self:end; font-size:0.82rem; border:1px solid rgba(255,253,248,0.35); padding:7px 14px; border-radius:2px; color:var(--wheat-light);}
+@media(max-width:720px){
+  .service-row{grid-template-columns:1fr; gap:8px;}
+  .service-tag{justify-self:start;}
+}
+
+/* ---------- GALLERY ---------- */
+.gallery-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:40px; flex-wrap:wrap;}
+.gallery-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem); max-width:12ch;}
+.gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:14px;}
+.gallery-grid > div{grid-column:span 1; grid-row:span 1; position:relative; overflow:hidden;}
+.gallery-grid > div:nth-child(1){grid-column:span 2; grid-row:span 2;}
+.gallery-grid > div:nth-child(4){grid-row:span 2;}
+.gallery-grid > div:nth-child(6){grid-column:span 2;}
+@media(max-width:760px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+  .gallery-grid > div:nth-child(1){grid-column:span 2; grid-row:span 1;}
+}
+.g-tile{width:100%; height:100%; display:flex; align-items:flex-end; padding:16px; font-family:'Fraunces',serif; font-size:0.95rem; color:var(--cream);}
+.g-tile span{background:rgba(43,33,24,0.55); padding:4px 10px; backdrop-filter:blur(2px);}
+.g1{background:linear-gradient(135deg,var(--crop),#28402b);}
+.g2{background:linear-gradient(135deg,var(--wheat),#9c7524);}
+.g3{background:linear-gradient(135deg,var(--clay),#7c3a18);}
+.g4{background:linear-gradient(160deg,var(--soil),#463322);}
+.g5{background:linear-gradient(135deg,var(--crop-light),#3f5942);}
+.g6{background:linear-gradient(135deg,#9c7524,var(--clay));}
+
+/* ---------- TEAM ---------- */
+.team-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:44px; margin-top:44px;}
+@media(max-width:760px){ .team-grid{grid-template-columns:1fr; gap:36px;} }
+.team-card .avatar{
+  width:100%; aspect-ratio:4/5; background:linear-gradient(150deg,var(--wheat-light),var(--wheat));
+  display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  font-family:'Fraunces',serif; font-size:2.6rem; color:var(--soil); font-weight:600;
+}
+.team-card h3{font-size:1.15rem; font-weight:500;}
+.team-card .role{color:var(--clay); font-size:0.88rem; margin-top:3px; font-weight:500;}
+.team-card p{margin-top:12px; font-size:0.92rem; color:var(--soil-soft);}
+
+/* ---------- BLOG ---------- */
+.blog{background:var(--cream); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:44px;}
+.blog-card{padding:30px 28px; border-left:1px solid var(--line);}
+.blog-card:first-child{border-left:none; padding-left:0;}
+@media(max-width:820px){
+  .blog-grid{grid-template-columns:1fr; gap:0;}
+  .blog-card{border-left:none; border-top:1px solid var(--line); padding:30px 0;}
+  .blog-card:first-child{border-top:none; padding-top:0;}
+}
+.blog-date{font-size:0.82rem; color:var(--clay); font-weight:600;}
+.blog-card h3{margin-top:12px; font-size:1.2rem; font-weight:500;}
+.blog-card p{margin-top:10px; font-size:0.92rem; color:var(--soil-soft);}
+.blog-read{display:inline-block; margin-top:16px; font-size:0.88rem; font-weight:600; color:var(--soil); border-bottom:1px solid var(--soil); padding-bottom:2px;}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px;}
+@media(max-width:900px){ .contact-grid{grid-template-columns:1fr; gap:40px;} }
+.contact-info h2{font-size:clamp(1.8rem,3.4vw,2.5rem); max-width:11ch;}
+.contact-list{margin-top:30px; display:flex; flex-direction:column; gap:22px;}
+.contact-list div span.label{display:block; font-size:0.82rem; color:var(--clay); font-weight:600; margin-bottom:4px;}
+.contact-list div a, .contact-list div p{font-size:1rem;}
+form{display:flex; flex-direction:column; gap:18px;}
+.field{display:flex; flex-direction:column; gap:6px;}
+.field label{font-size:0.85rem; color:var(--soil-soft);}
+.field input, .field textarea{
+  border:none; border-bottom:1px solid var(--line); background:transparent; padding:10px 2px;
+  font-family:'Work Sans',sans-serif; font-size:1rem; color:var(--soil);
+}
+.field input:focus, .field textarea:focus{outline:none; border-bottom-color:var(--clay);}
+.field textarea{resize:vertical; min-height:90px;}
+form button{margin-top:8px; align-self:flex-start;}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--soil); color:rgba(255,253,248,0.7); padding:56px 0 26px;}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px;}
+@media(max-width:720px){ .foot-grid{grid-template-columns:1fr; gap:30px;} }
+.foot-brand{font-family:'Fraunces',serif; font-size:1.3rem; color:var(--cream);}
+.foot-grid p{margin-top:14px; font-size:0.9rem; max-width:34ch;}
+.foot-col h4{font-size:0.85rem; color:var(--wheat-light); font-weight:600; margin-bottom:14px;}
+.foot-col a{display:block; font-size:0.9rem; margin-bottom:10px;}
+.foot-bottom{margin-top:48px; padding-top:22px; border-top:1px solid rgba(255,253,248,0.14); font-size:0.82rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+        <path d="M20 3C20 3 9 12 9 22C9 28.6 13.9 34 20 34C26.1 34 31 28.6 31 22C31 12 20 3 20 3Z" fill="#3F5942"/>
+        <path d="M20 34V17M20 17L14 12M20 17L26 12" stroke="#F6F1E7" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">Food with <em>Asad</em></span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Courses</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Team</a>
+      <a href="#blog">Insights</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Enroll now</a>
+    <div class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-line"><span class="dash"></span> Food Safety &amp; Quality Training, Depalpur</div>
+      <h1>Building safer food, one certified professional at a time.</h1>
+      <p class="lead">Food with Asad trains students and working professionals in HACCP, FSSC 22000 and practical quality assurance — grounded in real research-lab experience, built for Pakistan's growing food industry.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Explore courses</a>
+        <a href="#about" class="btn-ghost">Our story</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>3+</strong><span>Certifications taught</span></div>
+        <div><strong>100%</strong><span>Practical, industry-linked</span></div>
+        <div><strong>Depalpur</strong><span>Punjab, Pakistan</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="210" r="190" fill="#EFE6CD"/>
+        <g stroke="#C89B3C" stroke-width="3" stroke-linecap="round">
+          <path d="M120 320 C 130 220, 130 160, 120 90"/>
+          <path d="M120 90 C 100 100, 90 115, 85 130"/>
+          <path d="M120 90 C 140 100, 150 115, 155 130"/>
+          <path d="M120 140 C 100 150, 90 165, 85 180"/>
+          <path d="M120 140 C 140 150, 150 165, 155 180"/>
+          <path d="M120 190 C 100 200, 90 215, 85 230"/>
+          <path d="M120 190 C 140 200, 150 215, 155 230"/>
+        </g>
+        <g stroke="#3F5942" stroke-width="3" stroke-linecap="round">
+          <path d="M230 330 C 240 240, 240 170, 230 100"/>
+          <path d="M230 100 C 210 110, 200 125, 195 140"/>
+          <path d="M230 100 C 250 110, 260 125, 265 140"/>
+          <path d="M230 150 C 210 160, 200 175, 195 190"/>
+          <path d="M230 150 C 250 160, 260 175, 265 190"/>
+          <path d="M230 200 C 210 210, 200 225, 195 240"/>
+          <path d="M230 200 C 250 210, 260 225, 265 240"/>
+        </g>
+        <ellipse cx="175" cy="345" rx="95" ry="12" fill="#2B2118" opacity="0.12"/>
+        <circle cx="315" cy="95" r="7" fill="#B5562D"/>
+        <circle cx="70" cy="60" r="5" fill="#3F5942"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-track">
+    <span>HACCP TRAINING</span><span>·</span><span>FSSC 22000</span><span>·</span><span>QUALITY ASSURANCE</span><span>·</span>
+    <span>FOOD SAFETY AUDITS</span><span>·</span><span>CAREER MENTORSHIP</span><span>·</span>
+    <span>HACCP TRAINING</span><span>·</span><span>FSSC 22000</span><span>·</span><span>QUALITY ASSURANCE</span><span>·</span>
+    <span>FOOD SAFETY AUDITS</span><span>·</span><span>CAREER MENTORSHIP</span><span>·</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-label">About us</div>
+      <h2>Rooted in the lab, built for the industry</h2>
+    </div>
+    <div class="about-copy">
+      <p>Food with Asad was founded to close the gap between food science education and real factory-floor quality practice. We're led by a working Food Safety &amp; QA research assistant, so every course is shaped by problems we've actually solved — not just theory.</p>
+      <p>Based in Depalpur, Punjab, we work with students, fresh graduates and small food businesses across Pakistan who want internationally recognised quality credentials without leaving home.</p>
+      <ul class="credential-list">
+        <li>HACCP &amp; Advanced HACCP certified curriculum</li>
+        <li>FSSC 22000 awareness and implementation training</li>
+        <li>Hands-on guidance from an active university QA research assistant</li>
+        <li>FAO/Codex risk-assessment informed teaching material</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-label">What we offer</div>
+    <h2>Courses launching soon</h2>
+
+    <div class="service-row">
+      <div class="service-num">01</div>
+      <div>
+        <h3>HACCP Fundamentals</h3>
+        <p>A practical introduction to hazard analysis and critical control points for students and entry-level QA staff.</p>
+      </div>
+      <div class="service-tag">Coming soon</div>
+    </div>
+    <div class="service-row" style="align-items:flex-start;">
+      <div class="service-num">02</div>
+      <div>
+        <h3>Advanced HACCP &amp; Auditing</h3>
+        <p>A complete, Codex-aligned HACCP course — from the seven core principles to real factory case studies in meat and dairy processing.</p>
+        <div style="margin-top:16px; display:grid; grid-template-columns:repeat(2,1fr); gap:8px 24px; max-width:640px;">
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ History &amp; evolution of HACCP</span>
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ Prerequisite programs (PRPs)</span>
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ Hazard analysis (B/C/P hazards)</span>
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ Identifying critical control points</span>
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ Critical limits &amp; monitoring</span>
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ Corrective actions &amp; verification</span>
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ Documentation &amp; record-keeping</span>
+          <span style="font-size:0.86rem; color:rgba(255,253,248,0.75);">◦ Codex, FDA &amp; EU regulatory basis</span>
+        </div>
+      </div>
+      <div class="service-tag" style="background:var(--wheat); color:var(--soil); border-color:var(--wheat); font-weight:600;">Enrolling now</div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">03</div>
+      <div>
+        <h3>FSSC 22000 Essentials</h3>
+        <p>Understand the food safety system certification standard used by exporters and multinational food brands.</p>
+      </div>
+      <div class="service-tag">Coming soon</div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">04</div>
+      <div>
+        <h3>Career Prep for Food Science Graduates</h3>
+        <p>CVs, interviews and industry orientation for students entering Pakistan's food safety job market.</p>
+      </div>
+      <div class="service-tag">Coming soon</div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <div>
+        <div class="section-label">Gallery</div>
+        <h2>Life at Food with Asad</h2>
+      </div>
+      <p style="max-width:34ch; color:var(--soil-soft); font-size:0.94rem;">Photos from our training sessions and lab work will appear here as we roll out our first course batch.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g1 g-tile"><span>Lab &amp; QA work</span></div>
+      <div class="g2 g-tile"><span>Field visits</span></div>
+      <div class="g3 g-tile"><span>Training sessions</span></div>
+      <div class="g4 g-tile"><span>Student projects</span></div>
+      <div class="g5 g-tile"><span>Certifications</span></div>
+      <div class="g6 g-tile"><span>Community &amp; events</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="team" style="background:var(--cream); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-label">The team</div>
+    <h2 style="font-size:clamp(1.8rem,3.4vw,2.5rem); max-width:12ch;">People behind the courses</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="avatar">MA</div>
+        <h3>Muhammad Asad Tufail</h3>
+        <div class="role">Founder &amp; Lead Instructor</div>
+        <p>BS Food Science &amp; Technology student and Food Safety &amp; QA Research Assistant, University of Okara. HACCP, Advanced HACCP and FSSC 22000 certified.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">+</div>
+        <h3>Guest Instructor</h3>
+        <div class="role">Industry Partner</div>
+        <p>We're onboarding experienced QA professionals from the food industry to co-teach specialised modules.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">+</div>
+        <h3>Join the team</h3>
+        <div class="role">Open Position</div>
+        <p>Looking for food science graduates interested in teaching, content or operations — get in touch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog" id="blog">
+  <div class="wrap">
+    <div class="section-label">Insights</div>
+    <h2 style="font-size:clamp(1.8rem,3.4vw,2.5rem); max-width:14ch;">Notes on food safety &amp; careers</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-date">Coming soon</div>
+        <h3>What HACCP actually looks like on a factory floor</h3>
+        <p>A practical walkthrough of hazard analysis beyond the textbook, from real QA work.</p>
+        <span class="blog-read">Read article</span>
+      </div>
+      <div class="blog-card">
+        <div class="blog-date">Coming soon</div>
+        <h3>Building a food science CV recruiters notice</h3>
+        <p>How to present certifications, lab work and coursework for Pakistan's food industry jobs.</p>
+        <span class="blog-read">Read article</span>
+      </div>
+      <div class="blog-card">
+        <div class="blog-date">Coming soon</div>
+        <h3>FSSC 22000 vs ISO 22000, explained simply</h3>
+        <p>A short, plain-language guide to the two standards food exporters ask about most.</p>
+        <span class="blog-read">Read article</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="section-label">Get in touch</div>
+      <h2>Let's talk about your next course</h2>
+      <div class="contact-list">
+        <div>
+          <span class="label">Address</span>
+          <p>Depalpur, Punjab, Pakistan</p>
+        </div>
+        <div>
+          <span class="label">Phone</span>
+          <a href="tel:+923271143655">+92 327 1143655</a>
+        </div>
+        <div>
+          <span class="label">Email</span>
+          <a href="mailto:asadalijanjua.0003@gmail.com">asadalijanjua.0003@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message sent';">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="msg">Message</label>
+        <textarea id="msg" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="border:none; cursor:pointer;">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">Food with Asad</div>
+      <p>Practical food safety and quality assurance training, based in Depalpur, Punjab — built by people who work in the lab, not just teach from it.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="#about">About</a>
+      <a href="#services">Courses</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Team</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <a href="tel:+923271143655">+92 327 1143655</a>
+      <a href="mailto:asadalijanjua.0003@gmail.com">asadalijanjua.0003@gmail.com</a>
+      <a href="#contact">Depalpur, Punjab, Pakistan</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Food with Asad. All rights reserved.</span>
+    <span>Designed for a career in food safety.</span>
+  </div>
+</footer>
+
+</body>
+</html>
